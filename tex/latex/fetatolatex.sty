@@ -41,12 +41,15 @@
 \newbox\nbxi
 \newfont{\CSTNOTES}{musix13}
 \newfont{\LILYNOTES}{feta13}
+\newfont{\LILYCLEFS}{feta11}
 \newfont{\LILYBIGNOTES}{feta16}
 \newfont{\LILYALPHA}{feta-alphabet16}
 \newfont{\LILYBIGALPHA}{feta-alphabet20}
 \newfont{\LILYTIME}{feta-alphabet11}
 \newfont{\LILYALT}{old-feta13}
 \newfont{\cstnotes}{musix11}
+\newfont{\SCTEXT}{pncr}
+
 %
 
 % ACCIDENTALS
@@ -87,10 +90,13 @@
 \newcommand{\fetamordant}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{174}}\kern1.35em}}
 
 % CLEFS
-\newcommand{\cclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{201}}\kern1.35em}}
-\newcommand{\fclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{203}}\kern1.35em}}
-\newcommand{\gclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{205}}\kern1.35em}}
-\newcommand{\percuclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{207}}\kern1.35em}}
+\newcommand{\cclef}{{\LILYCLEFS\kern0.05em\raisebox{0.5ex}{\symbol{201}}\kern1.35em}}
+\newcommand{\fclef}{{\LILYCLEFS\kern0.05em\raisebox{0.5ex}{\symbol{203}}\kern1.35em}}
+\newcommand{\gclef}{{\LILYCLEFS\kern0.05em\raisebox{0.5ex}{\symbol{205}}\kern1.35em}}
+\newcommand{\percuclef}{{\LILYCLEFS\kern0.05em\raisebox{0.5ex}{\symbol{207}}\kern1.35em}}
+
+\newcommand{\gclefup}{{\LILYCLEFS\kern0.05em\raisebox{0.0ex}{\symbol{205}\kern-1.8mm
+\SCTEXT\raisebox{1.65ex}{\up{\tiny{\textit{\symbol{56}}}}}}\kern0.2em}}
 
 
 \newcommand{\pizzbartok}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{187}}\kern1.35em}}
