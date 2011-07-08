@@ -1,0 +1,51 @@
+%Classe de document
+\documentclass[11pt,a4paper]{report}
+
+%Francisation
+\usepackage [utf8] {inputenc} 
+\usepackage [LGR,T1] {fontenc} % Saisie fran??ais + grec
+\usepackage [frenchb] {babel}
+
+
+\usepackage[parfill]{parskip}
+\usepackage{allfeta}
+\usepackage{multicol}
+
+\makeindex
+\begin{document}
+%--------------------------PAGE DE GARDE-------------------
+%----------------------------------------------------------------------
+\thispagestyle{empty}
+\pagenumbering{roman}
+\begin{center}
+\begin{LARGE}
+Caractères de la police FETA\end{LARGE}
+\end{center}
+
+
+
+%------------------------------------INTRODUCTION--------------------
+%------------------------------------------------------------------------------
+%--------------------------CHAPITRES------------ ----------------
+%------------------------------------------------------------------------------
+
+Guitar music is written with a treble clef \fetadeuxcentcinq{} rather than 
+  a bass clef \fetadeuxcenttrois{}, which is correctly indicated by a small 8 
+  under the treble clef \fetadeuxcentcinq{}.
+
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\fetacenttrenteetun & \fetacentsoixantedeux \\
+%& \\
+\fetadeuxcentun & \fetadeuxcentcinq \\
+\end{tabular}
+\end{center}
+\caption{test}
+\label{default}
+\end{table}%
+
+
+
+\end{document}
