@@ -1,0 +1,4 @@
+feta16 feta16 "FetaEncoding ReEncodeFont" <feta.enc <feta16.pfb
+feta20 feta20 "FetaEncoding ReEncodeFont" <feta.enc <feta20.pfb
+feta-alphabet16 feta-alphabet16 "FetaAlphabetEncoding ReEncodeFont" <feta-alphabet.enc <feta-alphabet16.pfb
+parmesan16 parmesan16 "ParmesanEncoding ReEncodeFont" <parmesan.enc <parmesan16.pfb
