@@ -8,8 +8,7 @@
 
 
 \usepackage[parfill]{parskip}
-\usepackage{allfeta}
-\usepackage{multicol}
+\usepackage{fetatolatex}
 
 \makeindex
 \begin{document}
@@ -29,17 +28,14 @@ Caractères de la police FETA\end{LARGE}
 %--------------------------CHAPITRES------------ ----------------
 %------------------------------------------------------------------------------
 
-Guitar music is written with a treble clef \fetadeuxcentcinq{} rather than 
-  a bass clef \fetadeuxcenttrois{}, which is correctly indicated by a small 8 
-  under the treble clef \fetadeuxcentcinq{}.
-
+Here is a little test to display the use of LilyPond's font in a LaTeX file, using command such as \fetap{} or \fetaf{}. It's also possible to show time signature, wether simple like \metric{3}{4} or compound like \metric{3+2}{8}.
 
 \begin{table}[htdp]
 \begin{center}
 \begin{tabular}{|c|c|}
-\fetacenttrenteetun & \fetacentsoixantedeux \\
+\fermata & \fetagrupetto \\
 %& \\
-\fetadeuxcentun & \fetadeuxcentcinq \\
+\cclef & \gclef \\
 \end{tabular}
 \end{center}
 \caption{test}
