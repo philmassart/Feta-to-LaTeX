@@ -1,0 +1,187 @@
+%% fetatolatex.sty 2009/09/02
+%% by Philippe Massart <philippe.massart@gmail.com>
+%% Based on harmony.sty by Dagny Wegner <dagny.wegner@t-online.de>
+%% and Arnim Wegner <arnim.wegner@t-online.de>
+%
+%  This work may be distributed and/or modified under the
+%  conditions of the LaTeX Project Public License, either
+%  version 1.3 of this license or (at your option) any
+%  later version.
+%  The latest version of this license is in
+%  http://www.latex-project.org/lppl.txt
+%  and version 1.3 or later is part of all distributions
+%  of LaTeX version 2005/12/01 or later.
+%
+%  This work has the LPPL maintenance status `maintained'.
+%
+
+%  ==================================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fetatolatex}[2009/09/02]
+\RequirePackage{ifthen}
+\RequirePackage{amssymb}
+\DeclareOption{sf}{\def\FAM{\sffamily}}
+\DeclareOption{rm}{\def\FAM{\rmfamily}}
+\ExecuteOptions{sf}
+\ProcessOptions\relax
+%
+\newdimen\tmpdima
+\newdimen\tmpdimb
+\newdimen\tmpdimc
+\newdimen\tmpdimd
+\newdimen\tmpdime
+\newbox\nbxa
+\newbox\nbxb
+\newbox\nbxc
+\newbox\nbxd
+\newbox\nbxe
+\newbox\nbxf
+\newbox\nbxg
+\newbox\nbxh
+\newbox\nbxi
+\newfont{\CSTNOTES}{musix13}
+\newfont{\LILYNOTES}{feta13}
+\newfont{\LILYBIGNOTES}{feta16}
+\newfont{\LILYALPHA}{feta-alphabet16}
+\newfont{\LILYBIGALPHA}{feta-alphabet20}
+\newfont{\LILYTIME}{feta-alphabet11}
+\newfont{\LILYALT}{old-feta13}
+\newfont{\cstnotes}{musix11}
+%
+
+% etc. ... ! Define your own commands!
+
+\newcommand{\fetasharp}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{47}}\kern1.35em}}
+\newcommand{\fetasharpup}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{48}}\kern1.35em}}
+\newcommand{\fetasharpdown}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{49}}\kern1.35em}}
+\newcommand{\fetasharpupdown}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{50}}\kern1.35em}}
+\newcommand{\fetasemisharp}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{51}}\kern1.35em}}
+\newcommand{\fetasharpupone}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{52}}\kern1.35em}}
+\newcommand{\fetasharpuptwo}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{53}}\kern1.35em}}
+\newcommand{\fetafetasharpupthree}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{54}}\kern1.35em}}
+\newcommand{\fetanatural}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{55}}\kern1.35em}}
+\newcommand{\fetanaturalup}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{56}}\kern1.35em}}
+\newcommand{\fetanaturaldown}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{57}}\kern1.35em}}
+\newcommand{\fetanaturalupdown}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{58}}\kern1.35em}}
+\newcommand{\fetaflat}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{59}}\kern1.35em}}
+\newcommand{\fetaflatup}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{60}}\kern1.35em}}
+\newcommand{\fetaflatdown}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{61}}\kern1.35em}}
+\newcommand{\fetaflatupdown}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{62}}\kern1.35em}}
+\newcommand{\fetaflatslash}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{63}}\kern1.35em}}
+\newcommand{\fetaflatslashtwo}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{64}}\kern1.35em}}
+\newcommand{\fetaflatmirror}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{65}}\kern1.35em}}
+\newcommand{\fetaflatleft}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{66}}\kern1.35em}}
+\newcommand{\fetaflatleftslash}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{67}}\kern1.35em}}
+\newcommand{\fetadoubleflat}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{68}}\kern1.35em}}
+\newcommand{\fetadoubleflatslash}{{\LILYNOTES\kern0.05em\raisebox{0.7ex}{\symbol{69}}\kern1.35em}}
+\newcommand{\fetadoublesharp}{{\LILYNOTES\kern0.05em\raisebox{0.85ex}{\symbol{70}}\kern1.35em}}
+
+
+\newcommand{\fermata}{{\LILYNOTES\kern1.5mm\raisebox{0.5ex}{\symbol{131}}\kern1mm}}
+\newcommand{\fermatatwo}{{\LILYNOTES\kern1.5mm\raisebox{0.5ex}{\symbol{135}}\kern1.mm}}
+\newcommand{\fetaaccent}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{140}}\kern1.35em}}
+\newcommand{\fetabowup}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{152}}\kern1.35em}}
+\newcommand{\fetabowdown}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{153}}\kern1.35em}}
+\newcommand{\fetagrupetto}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{154}}\kern1.35em}}
+\newcommand{\fetasegno}{{\LILYNOTES\kern0.05em\raisebox{0.9ex}{\symbol{162}}\kern1.35em}}
+\newcommand{\fetacoda}{{\LILYNOTES\kern0.05em\raisebox{0.9ex}{\symbol{163}}\kern1.35em}}
+\newcommand{\fetamordant}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{174}}\kern1.35em}}
+\newcommand{\cclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{201}}\kern1.35em}}
+\newcommand{\fclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{203}}\kern1.35em}}
+\newcommand{\gclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{205}}\kern1.35em}}
+\newcommand{\percuclef}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{207}}\kern1.35em}}
+\newcommand{\pizzbartok}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{187}}\kern1.35em}}
+\newcommand{\pedalend}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{212}}\kern1.35em}}
+\newcommand{\pedalbeginshort}{{\LILYALT\kern0.05em\raisebox{0.5ex}{\symbol{215}}\kern1.35em}}
+\newcommand{\pedalbeginlong}{{\LILYALT\kern0.05em\raisebox{0.5ex}{\symbol{218}}\kern1.35em}}
+
+
+
+
+
+\newcommand{\customappogiatura}{{\CSTNOTES\raisebox{0.5ex}{\symbol{7}\kern1.35mm%
+\raisebox{0.55ex}{\symbol{16}}}\symbol{12}\kern0.9em}}
+
+%%% dynamics
+\newcommand{\fetaf}{{\LILYALPHA\kern0.05em{\symbol{102}}\kern1.35em}}%forte
+\newcommand{\fetap}{{\LILYALPHA\kern0.05em{\symbol{112}}\kern1.35em}}%piano
+\newcommand{\fetamf}{{\LILYALPHA\kern0.05em{\symbol{109}\kern0.936em%mezzoforte
+{\symbol{102}}}\kern0.2em}}
+\newcommand{\fetamp}{{\LILYALPHA\kern0.05em{\symbol{109}\kern0.35mm%mezzopiano
+{\symbol{112}}}\kern0.2em}}
+\newcommand{\fetafp}{{\LILYALPHA\kern0.05em{\symbol{102}\kern0.936em%fortepiano
+{\symbol{112}}}\kern0.2em}}
+\newcommand{\fetasfz}{{\LILYALPHA\kern0.05em{\symbol{115}\kern0.936em%sforzando
+{\symbol{102}}}\kern0.2em{\symbol{122}\kern0.2em}}}
+
+%% measure numbers
+\newcommand{\fetaover}[2]{%
+\setbox\nbxi=\hbox{%
+\FAM%
+\setbox\nbxa=\hbox{\scriptsize #1}%
+\setbox\nbxb=\hbox{\scriptsize #2}%
+\ifdim\wd\nbxa>\wd\nbxb%
+\tmpdima=\wd\nbxa%
+\else%
+\tmpdima=\wd\nbxb%
+\fi%
+\setbox\nbxa=\hbox to \tmpdima{\scriptsize\hss\LILYTIME#1\hss}%
+\setbox\nbxb=\hbox to \tmpdima{\scriptsize\hss\LILYTIME#2\hss}%
+\lower0.6ex\copy\nbxb%
+\kern-\wd\nbxb%
+\raise0.5\ht\nbxb%
+\box\nbxa%
+}%
+\unhbox\nbxi%
+}%
+\newcommand{\metric}[2]{{%
+\ifthenelse{\equal{#1}{c}}%
+{\ifthenelse{\equal{#2}{0}}{%
+%\raisebox{0.58ex}[8pt][2pt]{{\kern2pt \LILYALT\symbol{93}\kern-0.1cm}}}% \NOTEN
+\raisebox{0.58ex}[8pt][2pt]{{\kern2pt \LILYNOTES\symbol{210}\kern00.1cm}}}% \NOTEN
+%{\raisebox{0.58ex}[8pt][2pt]{\kern2pt \LILYALT\symbol{94}\kern-0.1cm}}}% \NOTEN
+{\raisebox{0.58ex}[8pt][2pt]{\kern2pt \LILYNOTES\symbol{211}\kern0.1cm}}}% \NOTEN
+{\kern0.05em\fetaover{#1}{#2}\kern0.05em%
+}}}
+
+
+%%%% commandes de notes
+\newcommand{\fetaronde}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{86}\kern-0.15mm%whole
+}\kern0.2em}}
+\newcommand{\fetablanche}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{87}\kern-0.15mm%half
+\CSTNOTES\raisebox{0.85ex}{\symbol{16}}}\kern0.2em}}
+\newcommand{\fetanoire}{{\LILYNOTES\kern0.05em\raisebox{0.5ex}{\symbol{88}\kern-0.15mm%quarter
+\CSTNOTES\raisebox{0.85ex}{\symbol{16}}}\kern0.2em}}
+\newcommand{\fetacroche}{\fetanoire {\LILYNOTES\kern0.05mm\raisebox{4.3ex}{\symbol{188}}}}%8th
+\newcommand{\fetadouble}{\fetanoire {\LILYNOTES\kern0.05mm\raisebox{4.3ex}{\symbol{189}}}}%16th
+\newcommand{\fetatriple}{\fetanoire {\LILYNOTES\kern0.05mm\raisebox{4.3ex}{\symbol{190}}}}%32th
+
+%%%% commandes de silences
+\newcommand{\fetapause}{{\LILYNOTES\kern0.05em\raisebox{1.5ex}{\symbol{35}\kern-0.15mm%whole rest
+}\kern0.2em}}
+\newcommand{\fetademipause}{{\LILYNOTES\kern0.05em\raisebox{0.2ex}{\symbol{36}\kern-0.15mm%half rest
+}\kern0.2em}}
+\newcommand{\fetasoupir}{{\LILYNOTES\kern0.05em\raisebox{0.6ex}{\symbol{40}\kern-0.15mm%quarter rest
+}\kern0.2em}}
+\newcommand{\fetademisoupir}{{\LILYNOTES\kern0.05em\raisebox{1ex}{\symbol{42}\kern-0.15mm%8th rest
+}\kern0.2em}}
+\newcommand{\fetaquartsoupir}{{\LILYNOTES\kern0.05em\raisebox{1.4ex}{\symbol{43}\kern-0.15mm%16th rest
+}\kern0.2em}}
+\newcommand{\fetahuitsoupir}{{\LILYNOTES\kern0.05em\raisebox{1ex}{\symbol{44}\kern-0.15mm%32th rest
+}\kern0.2em}}
+
+%%%%BIG
+\newcommand{\fetasoupirbig}{{\LILYBIGNOTES\kern0.05em\raisebox{0.6ex}{\symbol{40}\kern-0.15mm%quarter rest
+}\kern0.2em}}
+\newcommand{\fetaflatbig}{{\LILYBIGNOTES\kern0.05em\raisebox{0.7ex}{\symbol{59}}\kern1.35em}}
+\newcommand{\fetamfbig}{{\LILYBIGALPHA\kern0.05em{\symbol{109}\kern0.936em%mezzoforte
+{\symbol{102}}}\kern0.2em}}
+
+
+
+%%%% commandes de test
+
+\newcommand{\testlily}{{\LILYBIGNOTES\kern0.05em{\symbol{187}}\kern1.35em}}
+
+\newcommand{\testnuance}{{\LILYALPHA\kern0.05em{\symbol{109}\kern0.936em%
+{\symbol{102}}}\kern0.2em}}
