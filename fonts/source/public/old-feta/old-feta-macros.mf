@@ -1,0 +1,226 @@
+%
+% debugging
+%
+def test_grid =
+if test>1:
+	proofrulethickness 1pt#;
+	makegrid(0pt,0pt for i:=-5pt step 1pt until 5pt: ,i endfor)
+		(0pt,0pt for i:=-5pt step 1pt until 5pt: ,i endfor);
+	proofrulethickness .1pt#;
+	makegrid(0pt,0pt for i:=-4.8pt step .2pt until 4.8pt: ,i endfor)
+		(0pt,0pt for i:=-4.8pt step .2pt until 4.8pt: ,i endfor);
+fi
+	enddef;
+
+def treq =
+	tracingequations := tracingonline := 1;
+enddef;
+
+
+def draw_staff(expr first, last, offset)=
+	pickup pencircle scaled stafflinethickness;
+	for i:= first step 1 until last:
+		draw (- interline, (i + offset) * interline) .. (4 interline,( i+ offset)* interline);
+	endfor
+	enddef;
+
+
+%
+% Transforms
+%
+
+def scaledabout(expr point, scale) =
+	shifted -point scaled scale shifted point
+enddef;
+
+
+%
+% make a local (restored after endgroup) copy of t_var 
+%
+def local_copy(text type, t_var)=
+	save copy_temp;
+	type copy_temp;	
+	copy_temp := t_var;
+	save t_var;
+	type t_var;
+	t_var := copy_temp;
+enddef;
+
+
+%
+% Urgh! Want to do parametric types
+%
+
+def del_picture_stack=
+	save save_picture_stack, picture_stack_idx;
+enddef;
+
+% better versions of Taupin/Egler savepic cmds
+%
+%
+def make_picture_stack = 
+	% override previous stack.
+	del_picture_stack;
+	picture save_picture_stack[];
+	numeric picture_stack_idx;
+	picture_stack_idx := 0;
+	def push_picture(expr p) = 
+		save_picture_stack[picture_stack_idx] := p ;
+		picture_stack_idx := picture_stack_idx + 1;
+	enddef;
+	def pop_picture =  save_picture_stack[decr picture_stack_idx] enddef;
+	def top_picture = save_picture_stack[picture_stack_idx] enddef;
+enddef;
+
+
+% save/restore pens
+% why can't I delete individual pens?
+def make_pen_stack =
+	del_pen_stack;
+	pen save_pen_stack[];
+	numeric pen_stack_idx;
+	pen_stack_idx := 0;
+	def push_pen(expr p) = 
+		save_pen_stack[pen_stack_idx] := p ;
+		pen_stack_idx := pen_stack_idx +1;
+	enddef;
+	def pop_pen =  save_pen_stack[decr pen_stack_idx] enddef;
+	def top_pen = save_pen_stack[pen_stack_idx] enddef;
+enddef;
+def del_pen_stack=
+	save save_pen_stack, pen_stack_idx;
+enddef;
+
+%
+% drawing
+%
+
+def simple_serif(expr p,q, a)= 
+	p{dir(angle(q-p) -a)} .. q{ - dir(angle(p -q) + a)}
+enddef;
+%
+
+% a: x diameter
+% b: y diameter
+% err_x: drift of y axis at top
+% err_y: drift of x axis at right
+def distorted_ellipse(expr a,b,err_y,err_x,super) =
+	superellipse((a,err_x),(-err_y,b),(-a,-err_x),(err_y,-b),super);
+	enddef;
+
+% stolen from feta-eindelijk, but still
+% FIXME: too high
+def draw_block (expr bottom_left, top_right) =
+	pickup pencircle scaled blot_diameter;
+
+	begingroup;
+	save x,y;
+	bot y1 = ypart bottom_left;
+	top y2 = ypart top_right;
+	y3 = y2;
+	y4 = y1;
+
+	rt x1 = xpart top_right;
+	x2 = x1;
+	lft x3 = xpart bottom_left;
+	x4 = x3;
+
+	filldraw z1--z2--z3--z4--cycle;
+	endgroup;
+	enddef;
+
+def draw_brush(expr a,w,b,v) =
+	save x,y;
+	z1=a; z2=b;
+	penpos3(w,angle(z2-z1)+90);
+	penpos4(w,angle(z2-z1));
+	penpos5(v,angle(z1-z2)+90);
+	penpos6(v,angle(z1-z2));
+	z3 = z4 = z1;
+	z5 = z6 = z2;
+
+	fill z3r{z3r-z5l}..z4l..{z5r-z3l}z3l..z5r{z5r-z3l}..z6l..{z3r-z5l}z5l..cycle;
+enddef;
+
+def draw_flare(expr pos,alpha,beta,line,flare) =
+	begingroup;
+	clearxy;
+	penpos1(line,180+beta+alpha);
+	z1r=pos;
+	penpos2(flare,180+beta+alpha);
+	z2=z3;
+	penpos3(flare,0+alpha);
+	z3l=z1r+(1/2+0.43)*flare*dir(alpha+beta);
+	z4=z2r-line*dir(alpha);
+	penlabels(1,2,3,4);
+	pickup pencircle;
+	save t; t=0.833;
+	fill z1r{dir(alpha)}..z3r{dir(180+alpha-beta)}..z2l{dir(alpha+180)}
+		..z3l{dir(180+alpha+beta)}..tension t
+		..z4{dir(180+alpha+beta)}..z1l{dir(alpha+180)}..cycle;
+	endgroup;
+	enddef;
+
+def brush(expr a,w,b,v) =
+	begingroup;
+	draw_brush(a,w,b,v);	
+	penlabels(3,4,5,6);
+	endgroup;
+enddef;
+
+%
+% Draw a (rest) crook, starting at thickness STEM in point A,
+% ending a ball W to the left, diameter BALLDIAM
+% ypart of the center of the ball is BALLDIAM/4 lower than ypart A
+%
+def balled_crook(expr a, w, balldiam, stem) =
+begingroup;
+	save x,y;
+	penpos1(balldiam/2,-90);
+	penpos2(balldiam/2,0);
+	penpos3(balldiam/2,90);
+	penpos4(balldiam/2,180);
+	x4r=xpart a-w; y3r=ypart a+balldiam/4;
+	x1l=x2l=x3l=x4l;
+	y1l=y2l=y3l=y4l;
+	penpos5(stem,250);
+	x5=x4r+9/8balldiam; y5r=y1r;
+	penpos6(stem,260);
+	x6l=xpart a; y6l=ypart a;
+	penstroke z1e..z2e..z3e..z4e..z1e..z5e{right}..z6e;
+	penlabels(1,2,3,4,5,6);
+endgroup;
+enddef;
+
+def y_mirror_char =
+	currentpicture := currentpicture yscaled -1;
+	set_char_box(charbp, charwd, charht, chardp);
+enddef;
+
+
+def xy_mirror_char =
+	currentpicture := currentpicture scaled -1;
+	set_char_box(charwd, charbp, charht, chardp);
+enddef;
+
+ 
+%
+% center_factor: typically .5, the larger, the larger the radius of the bulb
+% radius factor: how much the bulb curves inward
+%
+def draw_bulb(expr turndir, zl, zr, bulb_rad, radius_factor)=
+	begingroup;
+	clearxy;
+	save rad, ang;
+
+	ang = angle(zr-zl);
+	z0 = zr + bulb_rad * (zl-zr)/length(zr -zl);
+	rad =  bulb_rad;
+
+	z1 = z0 + radius_factor* rad * dir(ang + turndir* 100);
+	z2 = z0 + rad * dir(ang  + turndir*300);
+	labels(0,1,2);
+	fill zr{dir (ang + turndir* 90)} .. z1 .. z2 -- cycle;
+
+	endgroup
+enddef;

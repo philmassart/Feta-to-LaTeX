@@ -1,0 +1,46 @@
+% 
+% feta-generic.mf --  implement generic stuff: include lots of files, but don't
+%  set dims.
+%
+% source file of the Feta (defintively not an abbreviation for Font-En-Tja)
+% music font
+% 
+% (c) 1997, 1998 Han-Wen Nienhuys <hanwen@stack.nl>
+% 
+
+
+if test = -1:
+	mode := smoke;
+fi
+
+mode_setup;
+%
+
+input old-feta-macros;
+
+make_pen_stack;
+make_picture_stack;
+input old-feta-params;
+
+
+
+
+if test = 0: 
+	input old-feta-eindelijk;
+	input old-feta-toevallig;
+	input old-feta-puntje;
+	input old-feta-bolletjes;
+	input old-feta-schrift;
+	input old-feta-banier;
+	input old-feta-klef;
+	input old-feta-timesig;
+else:
+	input old-feta-bolletjes;	
+%	input old-feta-banier;
+% 	input old-feta-eindelijk;
+%	input old-feta-klef;
+%	input old-feta-toevallig;
+%	input old-feta-schrift;
+%	input old-feta-haak;
+%	input old-feta-timesig;
+fi
