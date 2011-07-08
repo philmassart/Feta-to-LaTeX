@@ -18,3 +18,5 @@ The folders included in fonts are the following : enc, map, source and type1. Th
 test.tex
 --------
 This is a same TeX file intended to test the installation. Is includes a few glyphs and a table showing how the commands behave in a simple LaTeX structure.
+
+Most commands have to be followed by {} in order to allow correct spacing with the following text.
