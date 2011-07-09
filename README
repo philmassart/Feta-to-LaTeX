@@ -20,3 +20,20 @@ test.tex
 This is a same TeX file intended to test the installation. Is includes a few glyphs and a table showing how the commands behave in a simple LaTeX structure.
 
 Most commands have to be followed by {} in order to allow correct spacing with the following text.
+
+
+
+As you'll see the code is quite "amateurish" and is mostly a completion of the Harmony package (available on CTAN). I'm not a very experienced LaTeX user, so lot of things are made on a "try-cancel-try-cancel" mode.
+
+Among the problems, most importants are :
+
+- the big size of some symbols. I'm not able to use tinnier feta size than 11pt
+
+- feta glyphs seem, when zooming on the pdf, to be bitmap glyphs.
+
+- feta size is defined in the package. It would be nice to be able to change the size of the glyphs according to the document class settings (or perhaps by an option of the package).
+
+Perhaps someone more involved in LilyPond's coding and with Metafont abilities could find something interesting about that.
+
+There are still a lot of symbols to add (all clefs with octaviation, for instance), but I prefer to solve problems mentioned above.
+
