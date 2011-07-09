@@ -27,7 +27,7 @@ As you'll see the code is quite "amateurish" and is mostly a completion of the H
 
 Among the problems, most importants are :
 
-- the big size of some symbols. I'm not able to use tinnier feta size than 11pt
+- the big size of some symbols. I'm not able to use tinnier feta size than 11pt (sizes are 11, 13, 16, 20, 24)
 
 - feta glyphs seem, when zooming on the pdf, to be bitmap glyphs.
 
@@ -36,4 +36,3 @@ Among the problems, most importants are :
 Perhaps someone more involved in LilyPond's coding and with Metafont abilities could find something interesting about that.
 
 There are still a lot of symbols to add (all clefs with octaviation, for instance), but I prefer to solve problems mentioned above.
-
