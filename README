@@ -27,7 +27,7 @@ As you'll see the code is quite "amateurish" and is mostly a completion of the H
 
 Among the problems, most importants are :
 
-- the big size of some symbols. I'm not able to use tinnier feta size than 11pt (sizes are 11, 13, 16, 20, 24)
+- the big size of some symbols. I'm not able to use tinnier feta size than 11pt (sizes are 11, 13, 14, 16, 18, 20, 23, 26)
 
 - feta glyphs seem, when zooming on the pdf, to be bitmap glyphs.
 
