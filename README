@@ -5,6 +5,10 @@ This is a "first try" package intended to use LilyPond's feta font in LaTeX docu
 
 In order to make it work, you have to copy these files in your local texmf folder (depending on your platform and TeX installation).
 
+I guess it's necessary to tell LaTeX to look at these fonts when needed, by typing this command in the terminal :
+
+updmap --enable Map lilypond.map
+
 
 fetatolatex.sty
 ---------------
