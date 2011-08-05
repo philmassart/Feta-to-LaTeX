@@ -1,5 +1,5 @@
 README
-------
+------------
 
 This is a "first try" package intended to use LilyPond's feta font in LaTeX documents.
 
@@ -11,7 +11,7 @@ updmap --enable Map lilypond.map
 
 
 fetatolatex.sty
----------------
+------------------
 
 This file has to be placed in the tex folder of your texmf tree
 
